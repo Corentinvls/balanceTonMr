@@ -11,7 +11,6 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>AvatarPath</th>
-                <th>Project</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,7 +20,6 @@
                 <td>{{ team.id }}</td>
                 <td>{{ team.name }}</td>
                 <td>{{ team.avatarPath }}</td>
-                <td>{{ team.project ? team.project|join(', ') : '' }}</td>
                 <td>
                     <a href="{{ path('team_show', {'id': team.id}) }}">show</a>
                     <a href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
@@ -29,7 +27,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

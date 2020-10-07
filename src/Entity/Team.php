@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TeamRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,9 +30,15 @@ class Team
     private $avatarPath;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\ManyToMany(targetEntity=Projects::class, mappedBy="team")
      */
-    private $project = [];
+    private $projects;
+
+    public function __construct()
+    {
+        $this->projects = new ArrayCollection();
+    }
+
 
 
     public function getId(): ?int
@@ -63,14 +71,30 @@ class Team
         return $this;
     }
 
-    public function getProject(): ?array
+    /**
+     * @return Collection|Projects[]
+     */
+    public function getProjects(): Collection
     {
-        return $this->project;
+        return $this->projects;
     }
 
-    public function setProject(?array $project): self
+    public function addProject(Projects $project): self
     {
-        $this->project = $project;
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->addTeam($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Projects $project): self
+    {
+        if ($this->projects->contains($project)) {
+            $this->projects->removeElement($project);
+            $project->removeTeam($this);
+        }
 
         return $this;
     }

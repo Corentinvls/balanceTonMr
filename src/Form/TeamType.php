@@ -2,8 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Projects;
 use App\Entity\Team;
+use Doctrine\DBAL\Types\IntegerType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,9 +18,8 @@ class TeamType extends AbstractType
         $builder
             ->add('name')
             ->add('avatarPath')
-        ;
+            ->add('projects', EntityType::class, ['class' => Projects::class, 'choice_label' => 'name', 'multiple' => true, 'expanded' => true]);
     }
-
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([

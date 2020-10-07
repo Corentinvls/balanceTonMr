@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Team;
-use App\Form\Team1Type;
+use App\Form\TeamType;
 use App\Repository\TeamRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,8 +17,6 @@ class TeamController extends AbstractController
 {
     /**
      * @Route("/", name="team_index", methods={"GET"})
-     * @param TeamRepository $teamRepository
-     * @return Response
      */
     public function index(TeamRepository $teamRepository): Response
     {
@@ -33,7 +31,7 @@ class TeamController extends AbstractController
     public function new(Request $request): Response
     {
         $team = new Team();
-        $form = $this->createForm(Team1Type::class, $team);
+        $form = $this->createForm(TeamType::class, $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -65,7 +63,7 @@ class TeamController extends AbstractController
      */
     public function edit(Request $request, Team $team): Response
     {
-        $form = $this->createForm(Team1Type::class, $team);
+        $form = $this->createForm(TeamType::class, $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
