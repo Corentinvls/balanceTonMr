@@ -23,19 +23,10 @@ class Team
     private $name;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $users = [];
-
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $project = [];
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $avatarPath;
+
 
     public function getId(): ?int
     {
@@ -54,29 +45,6 @@ class Team
         return $this;
     }
 
-    public function getUsers(): ?array
-    {
-        return $this->users;
-    }
-
-    public function setUsers(?array $users): self
-    {
-        $this->users = $users;
-
-        return $this;
-    }
-
-    public function getProject(): ?array
-    {
-        return $this->project;
-    }
-
-    public function setProject(?array $project): self
-    {
-        $this->project = $project;
-
-        return $this;
-    }
 
     public function getAvatarPath(): ?string
     {
@@ -89,4 +57,5 @@ class Team
 
         return $this;
     }
+
 }
