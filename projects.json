@@ -1,0 +1,71 @@
+array(7) { [
+  0
+]=> array(18)
+{ [
+  "id"
+]=> int(21522457)
+[
+  "description"
+]=> string(0) ""
+[
+  "name"
+]=> string(7) "projet7"
+[
+  "name_with_namespace"
+]=> string(22) "Loic Le Meut / projet7"
+[
+  "path"
+]=> string(7) "projet7"
+[
+  "path_with_namespace"
+]=> string(15) "llemeut/projet7"
+[
+  "created_at"
+]=> string(24) "2020-10-02T12:38:12.147Z"
+[
+  "default_branch"
+]=> string(6) "master"
+[
+  "tag_list"
+]=> array(0) { }
+[
+  "ssh_url_to_repo"
+]=> string(34) "git@gitlab.com:llemeut/projet7.git"
+[
+  "http_url_to_repo"
+]=> string(38) "https://gitlab.com/llemeut/projet7.git"
+[
+  "web_url"
+]=> string(34) "https://gitlab.com/llemeut/projet7" [
+  "readme_url"
+]=> string(58) "https://gitlab.com/llemeut/projet7/-/blob/master/README.md" [
+  "avatar_url"
+]=> NULL [
+  "forks_count"
+]=> int(0) [
+  "star_count"
+]=> int(0) [
+  "last_activity_at"
+]=> string(24) "2020-10-02T12:38:12.147Z" [
+  "namespace"
+]=> array(8) { [
+  "id"
+]=> int(9415460) [
+  "name"
+]=> string(12) "Loic Le Meut" [
+  "path"
+]=> string(7) "llemeut" [
+  "kind"
+]=> string(4) "user" [
+  "full_path"
+]=> string(7) "llemeut" [
+  "parent_id"
+]=> NULL [
+  "avatar_url"
+]=> string(84) "https://secure.gravatar.com/avatar/60525e27078933b6086f324703846462?s=80&d=identicon" [
+  "web_url"
+]=> string(26) "https://gitlab.com/llemeut" } }
+[ 1 ]=> array(18) { [ "id" ]=> int(21256897) [ "description" ]=> string(0) "" [ "name" ]=> string(7) "projet6" [ "name_with_namespace" ]=> string(22) "Loic Le Meut / projet6" [ "path" ]=> string(7) "projet6" [ "path_with_namespace" ]=> string(15) "llemeut/projet6" [ "created_at" ]=> string(24) "2020-09-21T07:24:11.271Z" [ "default_branch" ]=> string(6) "master" [ "tag_list" ]=> array(0) { } [ "ssh_url_to_repo" ]=> string(34) "git@gitlab.com:llemeut/projet6.git" [ "http_url_to_repo" ]=> string(38) "https://gitlab.com/llemeut/projet6.git" [ "web_url" ]=> string(34) "https://gitlab.com/llemeut/projet6" [ "readme_url" ]=> string(58) "https://gitlab.com/llemeut/projet6/-/blob/master/README.md" [ "avatar_url" ]=> NULL [ "forks_count" ]=> int(0) [ "star_count" ]=> int(0) [ "last_activity_at" ]=> string(24) "2020-09-30T13:07:11.645Z" [ "namespace" ]=> array(8) { [ "id" ]=> int(9415460) [ "name" ]=> string(12) "Loic Le Meut" [ "path" ]=> string(7) "llemeut" [ "kind" ]=> string(4) "user" [ "full_path" ]=> string(7) "llemeut" [ "parent_id" ]=> NULL [ "avatar_url" ]=> string(84) "https://secure.gravatar.com/avatar/60525e27078933b6086f324703846462?s=80&d=identicon" [ "web_url" ]=> string(26) "https://gitlab.com/llemeut" } } [ 2 ]=> array(18) { [ "id" ]=> int(21256865) [ "description" ]=> string(0) "" [ "name" ]=> string(7) "projet5" [ "name_with_namespace" ]=> string(22) "Loic Le Meut / projet5" [ "path" ]=> string(7) "projet5" [ "path_with_namespace" ]=> string(15) "llemeut/projet5" [ "created_at" ]=> string(24) "2020-09-21T07:22:42.606Z" [ "default_branch" ]=> string(6) "master" [ "tag_list" ]=> array(0) { } [ "ssh_url_to_repo" ]=> string(34) "git@gitlab.com:llemeut/projet5.git" [ "http_url_to_repo" ]=> string(38) "https://gitlab.com/llemeut/projet5.git" [ "web_url" ]=> string(34) "https://gitlab.com/llemeut/projet5" [ "readme_url" ]=> string(58) "https://gitlab.com/llemeut/projet5/-/blob/master/README.md" [ "avatar_url" ]=> NULL [ "forks_count" ]=> int(0) [ "star_count" ]=> int(0) [ "last_activity_at" ]=> string(24) "2020-10-07T07:57:31.541Z" [ "namespace" ]=> array(8) { [ "id" ]=> int(9415460) [ "name" ]=> string(12) "Loic Le Meut" [ "path" ]=> string(7) "llemeut" [ "kind" ]=> string(4) "user" [ "full_path" ]=> string(7) "llemeut" [ "parent_id" ]=> NULL [ "avatar_url" ]=> string(84) "https://secure.gravatar.com/avatar/60525e27078933b6086f324703846462?s=80&d=identicon" [ "web_url" ]=> string(26) "https://gitlab.com/llemeut" } } [ 3 ]=> array(18) { [ "id" ]=> int(21256859) [ "description" ]=> string(0) "" [ "name" ]=> string(7) "projet4" [ "name_with_namespace" ]=> string(22) "Loic Le Meut / projet4" [ "path" ]=> string(7) "projet4" [ "path_with_namespace" ]=> string(15) "llemeut/projet4" [ "created_at" ]=> string(24) "2020-09-21T07:22:21.584Z" [ "default_branch" ]=> string(6) "master" [ "tag_list" ]=> array(0) { } [ "ssh_url_to_repo" ]=> string(34) "git@gitlab.com:llemeut/projet4.git" [ "http_url_to_repo" ]=> string(38) "https://gitlab.com/llemeut/projet4.git" [ "web_url" ]=> string(34) "https://gitlab.com/llemeut/projet4" [ "readme_url" ]=> string(58) "https://gitlab.com/llemeut/projet4/-/blob/master/README.md" [ "avatar_url" ]=> NULL [ "forks_count" ]=> int(0) [ "star_count" ]=> int(0) [ "last_activity_at" ]=> string(24) "2020-09-30T12:53:23.785Z" [ "namespace" ]=> array(8) { [ "id" ]=> int(9415460) [ "name" ]=> string(12) "Loic Le Meut" [ "path" ]=> string(7) "llemeut" [ "kind" ]=> string(4) "user" [ "full_path" ]=> string(7) "llemeut" [ "parent_id" ]=> NULL [ "avatar_url" ]=> string(84) "https://secure.gravatar.com/avatar/60525e27078933b6086f324703846462?s=80&d=identicon" [ "web_url" ]=> string(26) "https://gitlab.com/llemeut" } } [ 4 ]=> array(18) { [ "id" ]=> int(21256854) [ "description" ]=> string(0) "" [ "name" ]=> string(7) "projet3" [ "name_with_namespace" ]=> string(22) "Loic Le Meut / projet3" [ "path" ]=> string(7) "projet3" [ "path_with_namespace" ]=> string(15) "llemeut/projet3" [ "created_at" ]=> string(24) "2020-09-21T07:22:03.077Z" [ "default_branch" ]=> string(6) "master" [ "tag_list" ]=> array(0) { } [ "ssh_url_to_repo" ]=> string(34) "git@gitlab.com:llemeut/projet3.git" [ "http_url_to_repo" ]=> string(38) "https://gitlab.com/llemeut/projet3.git" [ "web_url" ]=> string(34) "https://gitlab.com/llemeut/projet3" [ "readme_url" ]=> string(58) "https://gitlab.com/llemeut/projet3/-/blob/master/README.md" [ "avatar_url" ]=> NULL [ "forks_count" ]=> int(0) [ "star_count" ]=> int(0) [ "last_activity_at" ]=> string(24) "2020-09-30T08:28:39.359Z" [ "namespace" ]=> array(8) { [ "id" ]=> int(9415460) [ "name" ]=> string(12) "Loic Le Meut" [ "path" ]=> string(7) "llemeut" [ "kind" ]=> string(4) "user" [ "full_path" ]=> string(7) "llemeut" [ "parent_id" ]=> NULL [ "avatar_url" ]=> string(84) "https://secure.gravatar.com/avatar/60525e27078933b6086f324703846462?s=80&d=identicon" [ "web_url" ]=> string(26) "https://gitlab.com/llemeut" } } [ 5 ]=> array(18) { [ "id" ]=> int(21256849) [ "description" ]=> string(0) "" [ "name" ]=> string(7) "projet2" [ "name_with_namespace" ]=> string(22) "Loic Le Meut / projet2" [ "path" ]=> string(7) "projet2" [ "path_with_namespace" ]=> string(15) "llemeut/projet2" [ "created_at" ]=> string(24) "2020-09-21T07:21:47.409Z" [ "default_branch" ]=> string(6) "master" [ "tag_list" ]=> array(0) { } [ "ssh_url_to_repo" ]=> string(34) "git@gitlab.com:llemeut/projet2.git" [ "http_url_to_repo" ]=> string(38) "https://gitlab.com/llemeut/projet2.git" [ "web_url" ]=> string(34) "https://gitlab.com/llemeut/projet2" [ "readme_url" ]=> string(58) "https://gitlab.com/llemeut/projet2/-/blob/master/README.md" [ "avatar_url" ]=> NULL [ "forks_count" ]=> int(0) [ "star_count" ]=> int(0) [ "last_activity_at" ]=> string(24) "2020-09-30T08:25:50.183Z" [ "namespace" ]=> array(8) { [ "id" ]=> int(9415460) [ "name" ]=> string(12) "Loic Le Meut" [ "path" ]=> string(7) "llemeut" [ "kind" ]=> string(4) "user" [ "full_path" ]=> string(7) "llemeut" [ "parent_id" ]=> NULL [ "avatar_url" ]=> string(84) "https://secure.gravatar.com/avatar/60525e27078933b6086f324703846462?s=80&d=identicon" [ "web_url" ]=> string(26) "https://gitlab.com/llemeut" } } [ 6 ]=> array(18) { [ "id" ]=> int(21221266) [ "description" ]=> string(0) "" [ "name" ]=> string(7) "projet1" [ "name_with_namespace" ]=> string(22) "Loic Le Meut / projet1" [ "path" ]=> string(7) "projet1" [ "path_with_namespace" ]=> string(15) "llemeut/projet1" [ "created_at" ]=> string(24) "2020-09-18T16:13:52.241Z" [ "default_branch" ]=> string(6) "master" [ "tag_list" ]=> array(0) { } [ "ssh_url_to_repo" ]=> string(34) "git@gitlab.com:llemeut/projet1.git" [ "http_url_to_repo" ]=> string(38) "https://gitlab.com/llemeut/projet1.git" [ "web_url" ]=> string(34) "https://gitlab.com/llemeut/projet1" [ "readme_url" ]=> string(58) "https://gitlab.com/llemeut/projet1/-/blob/master/README.md" [ "avatar_url" ]=> NULL [ "forks_count" ]=> int(0) [ "star_count" ]=> int(0) [ "last_activity_at" ]=> string(24) "2020-10-07T07:51:03.874Z" [ "namespace" ]=> array(8) { [ "id" ]=> int(9415460) [ "name" ]=> string(12) "Loic Le Meut" [ "path" ]=> string(7) "llemeut" [ "kind" ]=> string(4) "user" [ "full_path" ]=> string(7) "llemeut" [ "parent_id" ]=> NULL [ "avatar_url" ]=> string(84) "https://secure.gravatar.com/avatar/60525e27078933b6086f324703846462?s=80&d=identicon" [ "web_url" ]=> string(26) "https://gitlab.com/llemeut"
+}
+}
+}
