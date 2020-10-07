@@ -14,7 +14,7 @@ class DefaultController extends AbstractController {
      * @return Response
      */
     public function index(Client $client) {
-        $project = $client->projects()->all(["owned"=>true]);
+        $project = $client->projects()->all(["owned"=>true, "simple"=> true]);
         return new Response(var_dump($project));
     }
 }

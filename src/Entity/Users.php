@@ -42,6 +42,11 @@ class Users
      */
     private $password;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Team::class)
+     */
+    private $team;
+
 
     public function getId(): ?int
     {
@@ -104,6 +109,18 @@ class Users
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+    public function getTeam(): ?Team
+    {
+        return $this->team;
+    }
+
+    public function setTeam(?Team $team): self
+    {
+        $this->team = $team;
 
         return $this;
     }

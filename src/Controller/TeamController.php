@@ -3,14 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Team;
-use App\Form\TeamType;
+use App\Form\Team1Type;
 use App\Repository\TeamRepository;
-use phpDocumentor\Reflection\Project;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Gitlab\Client;
 
 /**
  * @Route("/team")
@@ -24,21 +22,18 @@ class TeamController extends AbstractController
      */
     public function index(TeamRepository $teamRepository): Response
     {
-
-       /* return $this->render('team/index.html.twig', [
+        return $this->render('team/index.html.twig', [
             'teams' => $teamRepository->findAll(),
-        ]);*/
+        ]);
     }
 
     /**
      * @Route("/new", name="team_new", methods={"GET","POST"})
-     * @param Request $request
-     * @return Response
      */
     public function new(Request $request): Response
     {
         $team = new Team();
-        $form = $this->createForm(TeamType::class, $team);
+        $form = $this->createForm(Team1Type::class, $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -57,8 +52,6 @@ class TeamController extends AbstractController
 
     /**
      * @Route("/{id}", name="team_show", methods={"GET"})
-     * @param Team $team
-     * @return Response
      */
     public function show(Team $team): Response
     {
@@ -69,13 +62,10 @@ class TeamController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="team_edit", methods={"GET","POST"})
-     * @param Request $request
-     * @param Team $team
-     * @return Response
      */
     public function edit(Request $request, Team $team): Response
     {
-        $form = $this->createForm(TeamType::class, $team);
+        $form = $this->createForm(Team1Type::class, $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -92,9 +82,6 @@ class TeamController extends AbstractController
 
     /**
      * @Route("/{id}", name="team_delete", methods={"DELETE"})
-     * @param Request $request
-     * @param Team $team
-     * @return Response
      */
     public function delete(Request $request, Team $team): Response
     {

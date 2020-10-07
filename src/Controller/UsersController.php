@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\UsersType;
+use App\Repository\TeamRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,8 +18,6 @@ class UsersController extends AbstractController
 {
     /**
      * @Route("/", name="users_index", methods={"GET"})
-     * @param UsersRepository $usersRepository
-     * @return Response
      */
     public function index(UsersRepository $usersRepository): Response
     {
@@ -29,8 +28,6 @@ class UsersController extends AbstractController
 
     /**
      * @Route("/new", name="users_new", methods={"GET","POST"})
-     * @param Request $request
-     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -54,8 +51,6 @@ class UsersController extends AbstractController
 
     /**
      * @Route("/{id}", name="users_show", methods={"GET"})
-     * @param Users $user
-     * @return Response
      */
     public function show(Users $user): Response
     {
@@ -66,11 +61,8 @@ class UsersController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="users_edit", methods={"GET","POST"})
-     * @param Request $request
-     * @param Users $user
-     * @return Response
      */
-    public function edit(Request $request, Users $user): Response
+    public function edit(Request $request, Users $user,TeamRepository $teamRepository,UsersRepository $usersRepository): Response
     {
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
@@ -84,14 +76,13 @@ class UsersController extends AbstractController
         return $this->render('users/edit.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
+            'teams' => $teamRepository->findAll(),
+            'users' => $usersRepository->findAll(),
         ]);
     }
 
     /**
      * @Route("/{id}", name="users_delete", methods={"DELETE"})
-     * @param Request $request
-     * @param Users $user
-     * @return Response
      */
     public function delete(Request $request, Users $user): Response
     {

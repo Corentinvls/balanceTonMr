@@ -16,16 +16,12 @@
                 <td>{{ team.name }}</td>
             </tr>
             <tr>
-                <th>Users</th>
-                <td>{{ team.users ? team.users|join(', ') : '' }}</td>
+                <th>AvatarPath</th>
+                <td>{{ team.avatarPath }}</td>
             </tr>
             <tr>
                 <th>Project</th>
                 <td>{{ team.project ? team.project|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>AvatarPath</th>
-                <td>{{ team.avatarPath }}</td>
             </tr>
         </tbody>
     </table>

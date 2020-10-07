@@ -27,6 +27,11 @@ class Team
      */
     private $avatarPath;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $project = [];
+
 
     public function getId(): ?int
     {
@@ -54,6 +59,18 @@ class Team
     public function setAvatarPath(?string $avatarPath): self
     {
         $this->avatarPath = $avatarPath;
+
+        return $this;
+    }
+
+    public function getProject(): ?array
+    {
+        return $this->project;
+    }
+
+    public function setProject(?array $project): self
+    {
+        $this->project = $project;
 
         return $this;
     }

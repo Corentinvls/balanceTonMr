@@ -13,8 +13,6 @@ class TeamType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('users')
-            ->add('project')
             ->add('avatarPath')
         ;
     }
