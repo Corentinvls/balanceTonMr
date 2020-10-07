@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Users;
 use App\Form\UsersType;
 use App\Repository\UsersRepository;
+use App\Services\ControllerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,23 +28,25 @@ class UsersController extends AbstractController
         ]);
     }
 
+    private $ControllerService;
+    public function __construct(ControllerService $ControllerService){
+        $this->ControllerService=$ControllerService;
+    }
+
     /**
      * @Route("/new", name="users_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ControllerService $ControllerService): Response
     {
         $user = new Users();
         $form = $this->createForm(UsersType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('users_index');
+            $res=$this->ControllerService->inForm($user);
+            return $res;
         }
 
         return $this->render('users/new.html.twig', [

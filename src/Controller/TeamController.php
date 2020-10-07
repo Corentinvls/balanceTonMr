@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Team;
 use App\Form\TeamType;
 use App\Repository\TeamRepository;
+use App\Services\ControllerService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,23 +37,26 @@ class TeamController extends AbstractController
         ]);*/
     }
 
+    private $ControllerService;
+    public function __construct(ControllerService $ControllerService){
+        $this->ControllerService=$ControllerService;
+    }
+
     /**
      * @Route("/new", name="team_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
-    public function new(Request $request): Response
+    public function new(Request $request, ControllerService $ControllerService): Response
     {
-        $team = new Team();
+        $team= new Team();
+        $ControllerService->$this->ControllerService->inForm($ControllerService);
         $form = $this->createForm(TeamType::class, $team);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($team);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('team_index');
+            $res=$this->ControllerService->inForm($team);
+            return $res;
         }
 
         return $this->render('team/new.html.twig', [
