@@ -10,7 +10,7 @@ use App\Services\GitlabServices;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route ("/projects")
+ * @Route ("/project")
  */
 class ProjectController extends AbstractController {
 
