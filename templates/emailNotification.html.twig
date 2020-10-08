@@ -1,0 +1,10 @@
+{% block html %}
+    <h1>#BalanceTonMr</h1>
+
+    <p> Voici la liste des merges requests en attente : </p>
+
+    {% for request in request %}
+        <li>{{ request.title }}</li>
+    {% endfor %}
+{% endblock %}
+

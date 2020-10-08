@@ -51,6 +51,12 @@
                 <a style="margin: 1rem" href="{{ path('projects_index') }}">edit</a>
             </div>
         {% endfor %}
+
+        <h3>Membres de l'équipe</h3>
+        {% for user in users %}
+        <p>{{ user.name }}</p>
+        {% endfor %}
+
         <h3>Merge Request</h3>
         <table class="table">
             <thead>
