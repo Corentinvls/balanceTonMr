@@ -1,8 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+    {{ form_start(form) }}
+    <h2>{{ form_label(form.name, 'Name') }}</h2>
+    {{ form_widget(form.name,{'attr': {'class': "input-group-text"}}) }}
+    <h2> {{ form_label(form.avatarPath, 'avatarPath') }}</h2>
+    {{ form_widget(form.avatarPath,{'attr': {'class': "input-group-text"}}) }}
+
+    <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
 {% endblock %}
