@@ -8,11 +8,12 @@
 
         {% for team in teams %}
             <div class="card"
-                 style="margin:10px; border:solid 1px; border-radius: 5px; padding: 20px; background: #000050 ">
+                 style="margin:10px; border:solid 1px; border-radius: 5px; padding: 20px; background: #000050">
                 <div class="card-header">
                     <img class="icon" style="width:20rem; height:auto;" src="./assets/img/{{ team.avatarPath }}"
                          alt="logo team"/>
                     <h2  style="color:#d2d2d2; font-size: 5em">{{ team.name }}</h2>
+
                 </div>
             </div>
         {% else %}
