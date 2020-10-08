@@ -27,4 +27,37 @@
     <a href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
 
     {{ include('team/_delete_form.html.twig') }}
+    {% for project in team.projects %}
+    <h1>Merge Request</h1>
+
+    <table class="table">
+
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Up</th>
+            <th>Down</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for request in requests %}
+            <tr>
+                <td>{{ request.id }}</td>
+                <td>{{ request.title }}</td>
+                <td>{{ request.created_at | date('d/m/Y H:i')}}</td>
+                <td>{{ request.author.name }}</td>
+                <td>{{ request.upvotes }}</td>
+                <td>{{ request.downvotes }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">No merge request found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {% endblock %}

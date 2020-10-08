@@ -63,12 +63,13 @@ class ProjectsController extends AbstractController
     /**
      * @Route("/{gitLabId}/mergerequests", name="projects_show", methods={"GET"})
      */
-    public function mergeRequestList(Client $client, Projects $project, Request $request, GitlabServices $gitlabServices): Response
+    public function mergeRequestList(Projects $project, Request $request, GitlabServices $gitlabServices): Response
     {
         $project_id = $request->get("gitLabId");
         $listMerge = $gitlabServices->getMergeRequestFromProject($project_id);
         return $this->render('projects/mergeRequest.html.twig', [
-            'requests' => $listMerge
+            'requests' => $listMerge,
+            'project' => $project,
         ]);
     }
 
@@ -97,7 +98,7 @@ class ProjectsController extends AbstractController
      */
     public function delete(Request $request, Projects $project): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$project->getGitLabId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $project->getGitLabId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($project);
             $entityManager->flush();
