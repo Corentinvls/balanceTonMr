@@ -17,8 +17,8 @@ class TeamType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('avatarPath')
-            ->add('projects', EntityType::class, ['class' => Projects::class, 'choice_label' => 'name', 'multiple' => true, 'expanded' => true]);
+            ->add('avatarPath');
+
     }
     public function configureOptions(OptionsResolver $resolver)
     {
