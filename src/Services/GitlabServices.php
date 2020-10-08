@@ -4,7 +4,6 @@
 namespace App\Services;
 
 
-use App\Entity\Articles;
 use App\Entity\Projects;
 use App\Repository\ProjectsRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -46,7 +45,8 @@ class GitlabServices
 
     public function getMergeRequestFromProject(int $project_id)
     {
-        return $this->client->mergeRequests()->all($project_id);
+        $allMergeRequest =  $this->client->mergeRequests()->all($project_id);
+        return $allMergeRequest;
     }
 
     public function getEntityManager()

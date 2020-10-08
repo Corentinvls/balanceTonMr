@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\Projects;
 use App\Form\ProjectsType;
 use App\Repository\ProjectsRepository;
+use Gitlab\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Services\GitlabServices;
 
 /**
  * @Route("/projects")
@@ -55,6 +57,18 @@ class ProjectsController extends AbstractController
     {
         return $this->render('projects/show.html.twig', [
             'project' => $project,
+        ]);
+    }
+
+    /**
+     * @Route("/{gitLabId}/mergerequests", name="projects_show", methods={"GET"})
+     */
+    public function mergeRequestList(Client $client, Projects $project, Request $request, GitlabServices $gitlabServices): Response
+    {
+        $project_id = $request->get("gitLabId");
+        $listMerge = $gitlabServices->getMergeRequestFromProject($project_id);
+        return $this->render('projects/mergeRequest.html.twig', [
+            'requests' => $listMerge
         ]);
     }
 

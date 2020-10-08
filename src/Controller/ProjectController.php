@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Projects;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
@@ -20,8 +21,9 @@ class ProjectController extends AbstractController {
      * @param GitlabServices $gitlabServices
      */
 
-    public function __construct(Environment $twig, GitlabServices $gitlabServices)
+    public function __construct(Environment $twig, GitlabServices $gitlabServices, Client $client)
     {
+        $this->client = $client;
         $this->twig = $twig;
         $this->gitlabServices = $gitlabServices;
     }
@@ -37,14 +39,24 @@ class ProjectController extends AbstractController {
     }
 
     /**
-     * @Route("/details", name="project_details")
+     * @Route("/{gitLabId}", name="project_details", methods={"GET"})
+     * @param Request $request
+     * @return Response
      */
+    public function mergeRequestsDetails(Projects $project) {
 
-    public function mergeRequestsDetails() {
-        $listMerge = $this->gitlabServices->getMergeRequestFromProject(21221266);
-        $content = $this->twig->render('projects/mergeRequest.html.twig', ['requests' => $listMerge]);
-        return new Response($content);
+        //return $project;
+
+        return $this->render('projects/mergeRequest.html.twig', [
+            'requests' => $project,
+        ]);
+
+        //$allMergeRequest = $this->client->mergeRequests()->all($listProjects);
+        //$listMerge = $this->gitlabServices->getMergeRequestFromProject($id);
+        //$content = $this->twig->render('projects/mergeRequest.html.twig', ['requests' => $allMergeRequest]);
+        //return new Response($content);
     }
+
 
 
 }
