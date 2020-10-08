@@ -5,10 +5,12 @@ namespace App\Controller;
 use App\Entity\Projects;
 use App\Form\ProjectsType;
 use App\Repository\ProjectsRepository;
+use Gitlab\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Services\GitlabServices;
 
 /**
  * @Route("/projects")
@@ -49,7 +51,7 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="projects_show", methods={"GET"})
+     * @Route("/{gitLabId}", name="projects_show", methods={"GET"})
      */
     public function show(Projects $project): Response
     {
@@ -59,7 +61,19 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="projects_edit", methods={"GET","POST"})
+     * @Route("/{gitLabId}/mergerequests", name="projects_show", methods={"GET"})
+     */
+    public function mergeRequestList(Client $client, Projects $project, Request $request, GitlabServices $gitlabServices): Response
+    {
+        $project_id = $request->get("gitLabId");
+        $listMerge = $gitlabServices->getMergeRequestFromProject($project_id);
+        return $this->render('projects/mergeRequest.html.twig', [
+            'requests' => $listMerge
+        ]);
+    }
+
+    /**
+     * @Route("/{gitLabId}/edit", name="projects_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Projects $project): Response
     {
@@ -79,7 +93,7 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="projects_delete", methods={"DELETE"})
+     * @Route("/{gitLabId}", name="projects_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Projects $project): Response
     {

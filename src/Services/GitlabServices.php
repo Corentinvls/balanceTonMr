@@ -28,7 +28,7 @@ class GitlabServices
 
         foreach ($allProjects as $project) {
             $newProject = new Projects();
-             $newProject->setGitLabId($project['id']);
+            $newProject->setGitLabId($project['id']);
             $newProject->setName($project['name']);
             $this->entityManager->persist($newProject);
             $this->entityManager->flush();
@@ -41,7 +41,8 @@ class GitlabServices
 
     public function getMergeRequestFromProject(int $project_id)
     {
-        return $this->client->mergeRequests()->all($project_id);
+        $allMergeRequest =  $this->client->mergeRequests()->all($project_id);
+        return $allMergeRequest;
     }
 
 
