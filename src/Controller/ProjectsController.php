@@ -49,7 +49,7 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="projects_show", methods={"GET"})
+     * @Route("/{gitLabId}", name="projects_show", methods={"GET"})
      */
     public function show(Projects $project): Response
     {
@@ -59,7 +59,7 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="projects_edit", methods={"GET","POST"})
+     * @Route("/{gitLabId}/edit", name="projects_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Projects $project): Response
     {
@@ -79,11 +79,11 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="projects_delete", methods={"DELETE"})
+     * @Route("/{gitLabId}", name="projects_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Projects $project): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$project->getGitLabId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($project);
             $entityManager->flush();
