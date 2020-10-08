@@ -52,9 +52,9 @@
                 <th>Down</th>
             </tr>
             </thead>
-            {% for  gitLabId in  gitLabIds %}
+            {% for  requests in  gitLabIds %}
 
-                {{ include('projects/mergeRequestOneProject.html.twig', {'requests': gitLabId}) }}
+                {{ include('projects/mergeRequestOneProject.html.twig', {'requests': requests}) }}
             {% else %}
                 <div class="team-project" style="display: flex; flex-direction: row; ">
                     <span style="margin: 1rem">Aucune merge request</span>
