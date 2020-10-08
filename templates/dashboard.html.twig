@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+    <h1>Dashboard</h1>
+    <div style="display:flex; flex-direction: row ">
+
+        {% for team in teams %}
+            <div class="card"
+                 style="margin:10px; border:solid 1px; border-radius: 5px; padding: 20px; background: #000050 ">
+                <div class="card-header">
+                    <img class="icon" style="width:20rem; height:auto;" src="./assets/img/{{ team.avatarPath }}"
+                         alt="logo team"/>
+                    <h2  style="color:#d2d2d2; font-size: 5em">{{ team.name }}</h2>
+                </div>
+            </div>
+        {% else %}
+            <tr>
+                <td colspan="4">no team found</td>
+            </tr>
+        {% endfor %}
+
+    </div>
+{% endblock %}

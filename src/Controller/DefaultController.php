@@ -4,6 +4,9 @@ namespace App\Controller;
 
 
 use App\Entity\Projects;
+use App\Repository\ProjectsRepository;
+use App\Repository\TeamRepository;
+use App\Repository\UsersRepository;
 use App\Services\GitlabServices;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,11 +23,30 @@ class DefaultController extends AbstractController
      * @var EntityManagerInterface
      */
     private $entityManager;
+    private $teamRepository;
+    private $projectsRepository;
+    /**
+     * @var Environment
+     */
+    private $twig;
+    /**
+     * @var UsersRepository
+     */
+    private $usersRepository;
 
-    public function __construct(Environment $twig, EntityManagerInterface $entityManager)
+    public function __construct(
+        Environment $twig,
+        EntityManagerInterface $entityManager,
+        ProjectsRepository $projectsRepository,
+        TeamRepository $teamRepository,
+        UsersRepository $usersRepository
+    )
     {
         $this->twig = $twig;
         $this->entityManager = $entityManager;
+        $this->projectsRepository = $projectsRepository;
+        $this->teamRepository = $teamRepository;
+        $this->usersRepository = $usersRepository;
     }
 
     /**
@@ -33,14 +55,11 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        //$project = $client->projects()->all(["owned"=>true, "simple" => true]);
-        //$content = $this->twig->render('projects/listProjects.html.twig', ['projects' => $project]);
-        //return new Response(var_dump($project));
-
-        //  $project = $client->mergeRequests()->all(21221266);
-        //  $content = $this->twig->render('projects/mergeRequest.html.twig', ['requests' => $project]);
-        $result =$this->entityManager->getRepository(Projects::class)->findBy(['gitLabId'=>21522457]);
-        return new Response ();
+        return $this->render('dashboard.html.twig', [
+            'teams' => $this->teamRepository->findAll(),
+            'projects' => $this->projectsRepository->findAll(),
+            'users' => $this->usersRepository->findAll()
+        ]);
     }
 
 }
