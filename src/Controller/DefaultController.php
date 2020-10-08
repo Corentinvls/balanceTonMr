@@ -50,7 +50,7 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/")
+     * @Route("/", name="dashboard")
      * @return Response
      */
     public function index()
