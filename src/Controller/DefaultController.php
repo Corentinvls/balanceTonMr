@@ -60,6 +60,7 @@ class DefaultController extends AbstractController
             'projects' => $this->projectsRepository->findAll(),
 
         ]);
+
     }
 
 }

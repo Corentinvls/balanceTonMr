@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-<!doctype html>
-{% extends 'base.html.twig' %}
 
 {% block title %}Projects{% endblock %}
 
@@ -42,6 +40,7 @@
             <th>Author</th>
             <th>Up</th>
             <th>Down</th>
+            <th>Comments number</th>
         </tr>
         </thead>
         <tbody>
@@ -52,6 +51,7 @@
                 <td>{{ request.created_at | date('d/m/Y H:i')}}</td>
                 <td>{{ request.author.name }}</td>
                 <td>{{ request.upvotes }}</td>
+                <td>{{ request.downvotes }}</td>
                 <td>{{ request.downvotes }}</td>
             </tr>
         {% else %}
