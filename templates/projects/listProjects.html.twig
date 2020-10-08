@@ -1,44 +1,14 @@
-<!doctype html>
-<header>
-    <div class="imgHeader">
-        <a href="https://127.0.0.1:8001/">
-            <img src="https://pbs.twimg.com/profile_images/694241544899923968/Yj5sO9P4_400x400.png" alt="logo gitlab">
-        </a>
-    </div>
-</header>
-<table>
+{% extends 'base.html.twig' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block body %}
+
     <table class="table">
         <thead>
         <tr>
             <th>Id</th>
-            <style>
-                div.imgHeader{
-                    background-color: #653484;
-                }
-                img{
-                    width: 60px;
-                    height: auto;
-                }
-                table {
-                    border-collapse: collapse;
-                    width: 100%;
-                }
 
-                th, td {
-                    text-align: left;
-                    padding: 8px;
-                }
-
-                tr:nth-child(even) {background-color: #f2f2f2;}
-                html{
-                    background-color: #ffffff;
-                }
-                header{
-                    background-color: #2c2c2c;
-                }
-                tr:nth-child(even) {background-color: #653484; color: white}
-
-            </style>
             <th>Name</th>
             <th>Creator</th>
             <th>Created at</th>
@@ -59,4 +29,4 @@
         {% endfor %}
         </tbody>
     </table>
-</table>
+{% endblock %}
