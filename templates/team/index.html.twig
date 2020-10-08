@@ -3,11 +3,6 @@
 {% block title %}Team index{% endblock %}
 
 {% block body %}
-    <div class="imgHeader">
-        <a href="https://127.0.0.1:8001/">
-            <img src="https://pbs.twimg.com/profile_images/694241544899923968/Yj5sO9P4_400x400.png" alt="logo gitlab">
-        </a>
-    </div>
     <h1>Team index</h1>
 
     <table class="table">
@@ -26,8 +21,8 @@
                 <td>{{ team.name }}</td>
                 <td>{{ team.avatarPath }}</td>
                 <td>
-                    <a href="{{ path('team_show', {'id': team.id}) }}">show</a>
-                    <a href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('team_show', {'id': team.id}) }}">show</a>
+                    <a class="btn btn-secondary" href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -38,5 +33,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('team_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('team_new') }}">Create new</a>
 {% endblock %}

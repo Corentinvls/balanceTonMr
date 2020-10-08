@@ -5,23 +5,36 @@
     <!-- Halfmoon CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
     <style>
-        img{
-            height: 3rem; width: auto;
+        img {
+            height: 3rem;
+            width: auto;
+        }
+
+        nav {
+            background: #653484;
+        }
+
+        th {
+            background: #653484;
+            color: #ffffff;
+        }
+
+        tr:nth-child(odd) {
+            background: rgba(101, 52, 132, 0.58);
+            color: #ffffff;
         }
     </style>
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-<!-- Page wrapper with .with-navbar class -->
-<div class="page-wrapper with-navbar">
-    <!-- Navbar (immediate child of the page wrapper) -->
+
     <nav class="navbar">
         <a href="https://127.0.0.1:8000/">
             <img class="img-rounded" src="/assets/img/gitLab.png" alt="logo gitlab">
         </a>
     </nav>
-</div>
+
 {% block body %}
 
 

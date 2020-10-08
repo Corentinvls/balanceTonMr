@@ -20,26 +20,34 @@
             </tr>
             </tbody>
         </table>
-        <div class="team-project" style="display: flex; flex-direction: row; ">
-            <a style="margin: 1rem" href="{{ path('team_index') }}">back to list</a>
-            <a style="margin: 1rem" href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
+        <div class="team-project" style="display: flex; flex-direction: row; justify-content: space-between">
+            <div>
+                <a class="btn btn-primary" href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
+                <a class="btn btn-link" href="{{ path('team_index') }}">back to list</a>
+            </div>
+<div>
+    {{ include('team/_delete_form.html.twig') }}
+</div>
+
         </div>
     </div>
-    {{ include('team/_delete_form.html.twig') }}
+    <hr>
     <div>
         <h3>Projet attribués</h3>
         {% for  project in  team.projects %}
             <div class="team-project" style="display: flex; flex-direction: row; ">
                 <span style="margin: 1rem">{{ project.name }}</span>
-                <a style="margin: 1rem" href="{{ path('projects_edit', {'gitLabId': project.gitLabId}) }}">edit</a>
+                <a class="btn btn-primary" style="margin: 1rem"
+                   href="{{ path('projects_edit', {'gitLabId': project.gitLabId}) }}">edit</a>
             </div>
 
         {% else %}
             <div class="team-project" style="display: flex; flex-direction: row; ">
                 <span style="margin: 1rem">Aucun</span>
-                <a style="margin: 1rem" href="{{ path('projects_index') }}">edit</a>
+                <a class="btn btn-primary" style="margin: 1rem" href="{{ path('projects_index') }}">edit</a>
             </div>
         {% endfor %}
+        <hr>
         <h3>Merge Request</h3>
         <table class="table">
             <thead>
@@ -59,7 +67,7 @@
             {% else %}
                 <div class="team-project" style="display: flex; flex-direction: row; ">
                     <span style="margin: 1rem">Aucune merge request</span>
-                    <a style="margin: 1rem" href="{{ path('projects_index') }}">edit</a>
+                    <a class="btn btn-primary" style="margin: 1rem" href="{{ path('projects_index') }}">edit</a>
                 </div>
             {% endfor %}
             </tbody>
