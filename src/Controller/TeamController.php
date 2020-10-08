@@ -4,17 +4,32 @@ namespace App\Controller;
 
 use App\Entity\Team;
 use App\Form\TeamType;
+use App\Repository\ProjectsRepository;
 use App\Repository\TeamRepository;
+use App\Repository\UsersRepository;
+use App\Services\GitlabServices;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Twig\Environment;
 
 /**
  * @Route("/team")
  */
 class TeamController extends AbstractController
 {
+    /**
+     * @var GitlabServices
+     */
+    private $gitlabServices;
+
+    public function __construct(GitlabServices $gitlabServices)
+    {
+        $this->gitlabServices = $gitlabServices;
+    }
+
     /**
      * @Route("/", name="team_index", methods={"GET"})
      */
@@ -53,8 +68,14 @@ class TeamController extends AbstractController
      */
     public function show(Team $team): Response
     {
+        $projects = $team->getProjects();
+        $projectsGitLabId = [];
+        foreach ($projects as $project) {
+            $projectsGitLabId[$project->getGitLabId()] =$this->gitlabServices->getMergeRequestFromProject($project->getGitLabId());
+        }
         return $this->render('team/show.html.twig', [
             'team' => $team,
+            'gitLabIds' => $projectsGitLabId
         ]);
     }
 
@@ -83,7 +104,7 @@ class TeamController extends AbstractController
      */
     public function delete(Request $request, Team $team): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$team->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $team->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($team);
             $entityManager->flush();

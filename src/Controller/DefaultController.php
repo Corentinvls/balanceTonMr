@@ -58,7 +58,7 @@ class DefaultController extends AbstractController
         return $this->render('dashboard.html.twig', [
             'teams' => $this->teamRepository->findAll(),
             'projects' => $this->projectsRepository->findAll(),
-            'users' => $this->usersRepository->findAll()
+
         ]);
     }
 

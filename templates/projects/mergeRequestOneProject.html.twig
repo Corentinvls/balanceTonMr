@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+
+
+
+
+    <tbody>
+    {% for request in requests %}
+        <tr>
+            <td>{{ request.id }}</td>
+            <td>{{ request.title }}</td>
+            <td>{{ request.created_at | date('d/m/Y H:i') }}</td>
+            <td>{{ request.author.name }}</td>
+            <td>{{ request.upvotes }}</td>
+            <td>{{ request.downvotes }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+
+{% endblock %}
