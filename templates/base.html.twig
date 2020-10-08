@@ -11,6 +11,8 @@
     </style>
     <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}{% endblock %}
+
+{% block body %}
 </head>
 <body>
 <!-- Page wrapper with .with-navbar class -->
@@ -22,8 +24,6 @@
         </a>
     </nav>
 </div>
-{% block body %}
-
 
 {% endblock %}
 {% block javascripts %}{% endblock %}
