@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Services\GitlabServices;
+use Twig\Environment;
 
 /**
  * @Route("/projects")
@@ -18,10 +19,21 @@ use App\Services\GitlabServices;
 class ProjectsController extends AbstractController
 {
     /**
+     * @var GitlabServices
+     */
+    private $gitlabServices;
+
+    public function __construct(GitlabServices $gitlabServices)
+    {
+       
+        $this->gitlabServices = $gitlabServices;
+    }
+    /**
      * @Route("/", name="projects_index", methods={"GET"})
      */
     public function index(ProjectsRepository $projectsRepository): Response
     {
+        $this->gitlabServices->getAllProjects();
         return $this->render('projects/index.html.twig', [
             'projects' => $projectsRepository->findAll(),
         ]);
