@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Team;
+use App\Entity\Users;
 use App\Form\TeamType;
 use App\Repository\ProjectsRepository;
 use App\Repository\TeamRepository;
@@ -66,16 +67,20 @@ class TeamController extends AbstractController
     /**
      * @Route("/{id}", name="team_show", methods={"GET"})
      */
-    public function show(Team $team): Response
+    public function show(Team $team, UsersRepository $usersRepository, Request $request, Users $users): Response
     {
+        $teamId = $request->get("id");
         $projects = $team->getProjects();
         $projectsGitLabId = [];
         foreach ($projects as $project) {
-            $projectsGitLabId[$project->getGitLabId()] =$this->gitlabServices->getMergeRequestFromProject($project->getGitLabId());
+            $projectsGitLabId[$project->getGitLabId()] = $this->gitlabServices->getMergeRequestFromProject($project->getGitLabId());
         }
         return $this->render('team/show.html.twig', [
             'team' => $team,
-            'gitLabIds' => $projectsGitLabId
+            'gitLabIds' => $projectsGitLabId,
+            'users' => $usersRepository->findBy(
+                ['team' => $teamId]
+            )
         ]);
     }
 

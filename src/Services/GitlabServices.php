@@ -37,7 +37,6 @@ class GitlabServices
                 $this->entityManager->flush();
             }
         }
-
         return $allProjects;
 
     }

@@ -8,12 +8,14 @@ use App\Repository\ProjectsRepository;
 use App\Repository\TeamRepository;
 use App\Repository\UsersRepository;
 use App\Services\GitlabServices;
+use App\Services\MailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Gitlab\Client;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
+
 
 
 class DefaultController extends AbstractController
@@ -39,7 +41,8 @@ class DefaultController extends AbstractController
         EntityManagerInterface $entityManager,
         ProjectsRepository $projectsRepository,
         TeamRepository $teamRepository,
-        UsersRepository $usersRepository
+        UsersRepository $usersRepository,
+        MailService $mailService
     )
     {
         $this->twig = $twig;
@@ -47,6 +50,7 @@ class DefaultController extends AbstractController
         $this->projectsRepository = $projectsRepository;
         $this->teamRepository = $teamRepository;
         $this->usersRepository = $usersRepository;
+        $this->mailService = $mailService;
     }
 
     /**
@@ -61,6 +65,15 @@ class DefaultController extends AbstractController
 
         ]);
 
+    }
+
+    /**
+     * @Route("/mail")
+     * @return Response
+     */
+    public function sendEmail() {
+        $this->mailService->sendNotifications();
+        return new Response("Mail send");
     }
 
 }
