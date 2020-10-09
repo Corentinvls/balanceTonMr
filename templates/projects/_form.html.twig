@@ -5,8 +5,8 @@
         <h2>{{ form_label(form.name, 'Gitlab ID') }}</h2>
         {{ form_widget(form.gitLabId,{'attr': {'class': "input-group-text"}}) }}
         <h2>{{ form_label(form.name, 'Name') }}</h2>
-        {{ form_widget(form.name,{'attr': {'class': "input-group-text"}}) }}
-        {{ form_row(form.team,{'attr': {'class': "custom-control-input "}}) }}
+{{ form_widget(form.name,{'attr': {'class': "input-group-text"}}) }}
+        {{ form_widget(form)}}
 
 
     </div>
