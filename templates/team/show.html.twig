@@ -3,7 +3,14 @@
 {% block title %}Team{% endblock %}
 
 {% block body %}
-
+    <nav class="navbar">
+        <a href="{{ path('dashboard') }}">
+            <img class="img-rounded" src="/assets/img/gitLab.png" alt="logo gitlab">
+        </a>
+        <a class="btn btn-link" href="{{ path('projects_index') }}">Project</a>
+        <a class="btn btn-link" href="{{ path('team_index') }}">Team</a>
+        <a class="btn btn-link" href="{{ path('users_index') }}">users</a>
+    </nav>
     <h1>Team</h1>
     <div>
         <table class="table">
