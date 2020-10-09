@@ -3,8 +3,15 @@
 {% block title %}Team index{% endblock %}
 
 {% block body %}
-    <h1>Team index</h1>
 
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Liste des équipes</h1>
+            <a class="btn btn-success" href="{{ path('team_new') }}">Créer une nouvelle équipe</a>
+        </div>
+    </div>
+
+    <div class="container">
     <table class="table">
         <thead>
         <tr>
@@ -19,7 +26,7 @@
             <tr>
                 <td>{{ team.id }}</td>
                 <td>{{ team.name }}</td>
-                <td>{{ team.avatarPath }}</td>
+                <td><img src=".assets/img/{{ team.avatarPath }}"></td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('team_show', {'id': team.id}) }}">show</a>
                     <a class="btn btn-secondary" href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
@@ -32,6 +39,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn btn-success" href="{{ path('team_new') }}">Create new</a>
+    </div>
 {% endblock %}

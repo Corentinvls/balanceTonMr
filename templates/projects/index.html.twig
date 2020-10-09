@@ -14,15 +14,21 @@
             width: 60px;
             height: auto;
         }</style>
-    <h1>Projects index</h1>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Liste des projets</h1>
+            <a class="btn btn-success" href="{{ path('projects_new') }}">Créer un nouveau projet</a>
+        </div>
+    </div>
 
+    <div class="container">
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>GitLabId</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -32,8 +38,8 @@
                 <td>{{ project.gitLabId }}</td>
                 <td>{{ project.name }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ path('projects_show', {'gitLabId': project.gitLabId}) }}">show</a>
-                    <a class="btn btn-secondary" href="{{ path('projects_edit', {'gitLabId': project.gitLabId}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('projects_show', {'gitLabId': project.gitLabId}) }}">Détails</a>
+                    <a class="btn btn-secondary" href="{{ path('projects_edit', {'gitLabId': project.gitLabId}) }}">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -43,6 +49,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn btn-success" href="{{ path('projects_new') }}">Create new</a>
+    </div>
 {% endblock %}

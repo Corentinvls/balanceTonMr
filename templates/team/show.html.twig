@@ -4,55 +4,51 @@
 
 {% block body %}
 
-    <h1>Team</h1>
-    <div>
-        <table class="table">
-            <tbody>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>AvatarPath</th>
-            </tr>
-            <tr>
-                <td>{{ team.id }}</td>
-                <td>{{ team.name }}</td>
-                <td>{{ team.avatarPath }}</td>
-            </tr>
-            </tbody>
-        </table>
-        <div class="team-project" style="display: flex; flex-direction: row; justify-content: space-between">
-            <div>
-                <a class="btn btn-primary" href="{{ path('team_edit', {'id': team.id}) }}">edit</a>
-                <a class="btn btn-link" href="{{ path('team_index') }}">back to list</a>
-            </div>
-<div>
-    {{ include('team/_delete_form.html.twig') }}
-</div>
-
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Team {{ team.name }}</h1>
+            <p> {{ include('team/_delete_form.html.twig') }} </p>
         </div>
     </div>
-    <hr>
-    <div>
-        <h3>Projet attribués</h3>
-        {% for  project in  team.projects %}
-            <div class="team-project" style="display: flex; flex-direction: row; ">
-                <span style="margin: 1rem">{{ project.name }}</span>
-                <a class="btn btn-primary" style="margin: 1rem"
-                   href="{{ path('projects_edit', {'gitLabId': project.gitLabId}) }}">edit</a>
-            </div>
 
-        {% else %}
-            <div class="team-project" style="display: flex; flex-direction: row; ">
-                <span style="margin: 1rem">Aucun</span>
-                <a class="btn btn-primary" style="margin: 1rem" href="{{ path('projects_index') }}">edit</a>
-            </div>
-        {% endfor %}
-<hr>
+    <div class="container" style="">
         <h3>Membres de l'équipe</h3>
+        <div class="row">
         {% for user in users %}
-        <p>{{ user.name }}</p>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ user.name }}</h5>
+                        <a href="./users/{{ user.id }}" class="btn btn-primary">Détails du membre</a>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    Aucun membre dans l'équipe, ajoutez-en !
+                </div>
         {% endfor %}
+        </div>
 
+        <h3>Projets attribués</h3>
+
+        <div class="row">
+            {% for project in team.projects %}
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ project.name }}</h5>
+                            <a href="projects/{{ project.gitLabId }}/mergeRequests" class="btn btn-primary">Détails du projet</a>
+                            <a href="{{ path('projects_edit', {'gitLabId': project.gitLabId}) }}"class="btn btn-primary">Modifier</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    Aucun projet attribué à votre équipe !
+                </div>
+            {% endfor %}
+        </div>
         <h3>Merge Request</h3>
         <table class="table">
             <thead>

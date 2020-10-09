@@ -3,29 +3,57 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block body %}
-    <div style="display:flex; flex-direction: row ">
-
-        {% for team in teams %}
-            <a href="./team/{{ team.id }}" style="text-decoration: none;">
-            <div class="card"
-                 style="margin:10px; border:solid 1px; border-radius: 5px; padding: 20px; background: #000050">
-                <div class="card-header">
-                    <h1 style="color: white;">Equipe {{ team.id }}</h1>
-                    <img class="icon" style="width:20rem; height:auto;" src="./assets/img/{{ team.avatarPath }}"
-                         alt="logo team"/>
-
-                    <h3 style="color:#d2d2d2; font-size: 5em;">
-                        {{ team.name }}
-                    </h3>
-
-                </div>
-            </div>
-            </a>
-        {% else %}
-            <tr>
-                <td colspan="4">no team found</td>
-            </tr>
-        {% endfor %}
-
+    <div class="jumbotron">
+        <div class="container">
+            <h1>#BalanceTonMR</h1>
+        </div>
     </div>
+
+
+    <div class="container">
+        <h2>Liste des équipes</h2>
+     <div class="container">
+       <div class="row">
+        {% for team in teams %}
+            <div class="col-sm-6">
+        <div class="card" style="width: 20rem;">
+            <img src="./assets/img/{{ team.avatarPath }}" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">{{ team.name }}</h5>
+                <a href="./team/{{ team.id }}" class="btn btn-primary">Détails de l'équipe</a>
+                <a href="./team/{{ team.id }}/edit" class="btn btn-primary">Editer</a>
+            </div>
+        </div>
+        </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    Aucune équipe trouvée !
+                </div>
+        {% endfor %}
+    </div>
+    </div>
+    </div>
+
+    <div class="container">
+        <h2>Liste des projets</h2>
+     <div class="container">
+       <div class="row">
+        {% for project in projects %}
+            <div class="col-sm-6">
+        <div class="card" style="width: 20rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.name }}</h5>
+                <a href="./projects/{{ project.gitLabId }}/mergerequests" class="btn btn-primary">Détails du projet</a>
+                <a href="./projects/{{ project.gitLabId }}/edit" class="btn btn-primary">Editer</a>
+            </div>
+        </div>
+        </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    Aucune équipe trouvée !
+                </div>
+        {% endfor %}
+    </div>
+    </div>
+
 {% endblock %}
