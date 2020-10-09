@@ -6,16 +6,19 @@
 
 namespace App\Services;
 
+use App\Entity\Users;
 use App\Repository\ProjectsRepository;
 use App\Repository\UsersRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 
-class MailService {
+class MailService
+{
 
     private $projectsRepository;
     private $gitlabServices;
     private $usersRepository;
+
 
     public function __construct(MailerInterface $mailer, ProjectsRepository $projectsRepository, GitlabServices $gitlabServices, UsersRepository $usersRepository)
     {
@@ -25,19 +28,35 @@ class MailService {
         $this->usersRepository = $usersRepository;
     }
 
-    public function sendNotifications() {
+    public function sendNotifications()
+    {
 
-        $message = (new TemplatedEmail())
-            ->from('s@gmail.com')
-            ->to($this->usersRepository->findAll())
-            ->subject('MR Notifications')
-            ->htmlTemplate('emailNotification.html.twig')
-            ->context([
-                'projects' => $this->projectsRepository->findAll(),
-                'requests' => $this->gitlabServices->getMergeRequestFromProject(21221266)
-            ]);
+        $users = $this->usersRepository->findAll();
+        foreach ($users as $user) {
+            $email = $user->getEmail();
+            $team = $user->getTeam();
+            $context = [];
+            foreach ($team->getProjects() as $projectId) {
+                array_push($context, $this->gitlabServices->getMergeRequestFromProject($projectId->getGitLabId()));
+            }
 
-        $this->mailer->send($message);
+            // $projects = $this->projectsRepository->findAll();
+            if (count($context) > 0) {
+                $message = (new TemplatedEmail())
+                    ->from('s@gmail.com')
+                    ->to($email)
+                    ->cc('laaurentsem@gmail.com')
+                    ->subject('MR Notifications')
+                    ->htmlTemplate('emailNotification.html.twig')
+                    ->context([
+                        'requests' => $context
+                    ]);
+                $this->mailer->send($message);
+            }
 
-}}
+        }
+
+
+    }
+}
 

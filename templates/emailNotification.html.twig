@@ -4,14 +4,16 @@
     <p>test message via Twig</p>
     <p>voici la liste des projets : </p>
 
-{% for project in projects %}
-    <li>{{ project.id }}</li>
-    <li>{{ project.gitLabId }}</li>
-    <li>{{ project.name }}</li>
-{% endfor %}
+{#{% for project in projects %}#}
+{#    <li>{{ project.id }}</li>#}
+{#    <li>{{ project.gitLabId }}</li>#}
+{#    <li>{{ project.name }}</li>#}
+{#{% endfor %}#}
 
-    {% for request in requests %}
+    {% for project in requests %}
+        {% for request in project %}
     <li> {{ request.title }}</li>
+{% endfor %}
 {% endfor %}
 {% endblock %}
 
