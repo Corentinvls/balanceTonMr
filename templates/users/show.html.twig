@@ -3,8 +3,18 @@
 {% block title %}Users{% endblock %}
 
 {% block body %}
-    <h1>Users</h1>
 
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Détails du membre</h1>
+            <div class="row">
+                <a class="btn btn-primary" href="{{ path('users_edit', {'id': user.id}) }}">Editer</a>
+                {{ include('users/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
     <table class="table">
         <tbody>
             <tr>
@@ -29,10 +39,6 @@
             </tr>
         </tbody>
     </table>
-
-    <a class="btn btn-link" href="{{ path('users_index') }}">back to list</a>
-
-    <a class="btn btn-primary" href="{{ path('users_edit', {'id': user.id}) }}">edit</a>
-
-    {{ include('users/_delete_form.html.twig') }}
+    </div>
+    <a class="btn btn-link" href="{{ path('users_index') }}">Revenir à la liste</a>
 {% endblock %}
