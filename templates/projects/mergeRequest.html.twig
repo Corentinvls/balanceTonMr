@@ -34,8 +34,10 @@
 
         <thead>
         <tr>
+            <td>Project id</td>
             <th>Id</th>
             <th>Title</th>
+            <th>State</th>
             <th>Description</th>
             <th>Date</th>
             <th>Author</th>
@@ -47,8 +49,10 @@
         <tbody>
         {% for request in requests %}
             <tr>
+                <td>{{ request.project_id }}</td>
                 <td>{{ request.id }}</td>
                 <td>{{ request.title }}</td>
+                <td>{{ request.state }}</td>
                 <td>{{ request.description }}</td>
                 <td>{{ request.created_at | date('d/m/Y H:i')}}</td>
                 <td>{{ request.author.name }}</td>

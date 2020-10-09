@@ -1,10 +1,17 @@
 {% block html %}
     <h1>#BalanceTonMr</h1>
 
-    <p> Voici la liste des merges requests en attente : </p>
+    <p>test message via Twig</p>
+    <p>voici la liste des projets : </p>
 
-    {% for request in request %}
-        <li>{{ request.title }}</li>
-    {% endfor %}
+{% for project in projects %}
+    <li>{{ project.id }}</li>
+    <li>{{ project.gitLabId }}</li>
+    <li>{{ project.name }}</li>
+{% endfor %}
+
+    {% for request in requests %}
+    <li> {{ request.title }}</li>
+{% endfor %}
 {% endblock %}
 

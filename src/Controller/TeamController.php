@@ -70,7 +70,6 @@ class TeamController extends AbstractController
     public function show(Team $team, UsersRepository $usersRepository, Request $request, Users $users): Response
     {
         $teamId = $request->get("id");
-        var_dump($teamId);
         $projects = $team->getProjects();
         $projectsGitLabId = [];
         foreach ($projects as $project) {

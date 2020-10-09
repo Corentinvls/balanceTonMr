@@ -6,32 +6,36 @@
 
 namespace App\Services;
 
-use App\Entity\Projects;
-use App\Entity\Team;
-use App\Entity\Users;
-use Gitlab\Model\User;
+use App\Repository\ProjectsRepository;
+use App\Repository\UsersRepository;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 
 class MailService {
 
-    public function __construct(MailerInterface $mailer)
+    private $projectsRepository;
+    private $gitlabServices;
+    private $usersRepository;
+
+    public function __construct(MailerInterface $mailer, ProjectsRepository $projectsRepository, GitlabServices $gitlabServices, UsersRepository $usersRepository)
     {
         $this->mailer = $mailer;
+        $this->projectsRepository = $projectsRepository;
+        $this->gitlabServices = $gitlabServices;
+        $this->usersRepository = $usersRepository;
     }
-
-    public function getProjectIdForMail(Projects $projects, Team $team, Users $users) {
-
-    }
-
 
     public function sendNotifications() {
 
         $message = (new TemplatedEmail())
             ->from('s@gmail.com')
-            ->to('laaurentsem@gmail.com')
+            ->to($this->usersRepository->findAll())
             ->subject('MR Notifications')
-            ->htmlTemplate('emailNotification.html.twig');
+            ->htmlTemplate('emailNotification.html.twig')
+            ->context([
+                'projects' => $this->projectsRepository->findAll(),
+                'requests' => $this->gitlabServices->getMergeRequestFromProject(21221266)
+            ]);
 
         $this->mailer->send($message);
 
